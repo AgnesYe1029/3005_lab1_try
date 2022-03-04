@@ -12,7 +12,7 @@ import java.util.*;
 // Java Program to Implement Dijkstra's Algorithm
 // Using Priority Queue
 // Main class DPQ
-public class GFG {
+public class Task1 {
 
     // Member variables of this class
     private Double dist[];
@@ -28,7 +28,7 @@ public class GFG {
 
 
     // constructor of this class
-    public GFG(int V) {
+    public Task1(int V) {
         this.V = V;
         this.energy_cost = 0;
         dist = new Double[V];
@@ -167,8 +167,12 @@ public class GFG {
         }
 
         // Calculating the single source shortest path
-        GFG dpq = new GFG(V);
+        Task1 dpq = new Task1(V);
+        long startTime = System.nanoTime();
         dpq.dijkstra(adj, cost_adj, source);
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
+
 
         // Print shortest path
         System.out.print("Shortest path: ");
@@ -191,7 +195,10 @@ public class GFG {
         System.out.println("Shortest distance: " + dpq.dist[49]);
 
         //print energy cost
-        System.out.println("Total energy cost: " + energy_cost);
+        System.out.println("Energy consumed: " + energy_cost);
+
+        //print time used
+        System.out.println("Time used to explore: " + duration + " ms");
 
     }
 }
