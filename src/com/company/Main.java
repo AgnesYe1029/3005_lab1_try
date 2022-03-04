@@ -37,7 +37,7 @@ public class Main {
          */
         int V = coordMap.size(); // total number of nodes
         System.out.println("-----------------------Task1---------------------------------------");
-        GFG.solveTask1(V, distMap_intArray, costMap_intArray);
+        Task1.solveTask1(V, distMap_intArray, costMap_intArray);
 
         /**
          * Task 2
@@ -68,11 +68,15 @@ public class Main {
         System.out.println("-----------------------Task3 Static Weighting---------------------------------------");
         double weight = 1.19;
         Task3_1 task3_1 = new Task3_1(distMap_intArray,costMap_intArray,coordMap,weight);
+        long startTime3 = System.nanoTime();
         node2 ans3_1 = task3_1.ucs();
+        long endTime3 = System.nanoTime();
+        long duration3 = (endTime3 - startTime3) / 1000000;
         if(ans3_1 != null){
             ans3_1.printPath();
             System.out.println("Shortest distance: "+  ans3_1.distCost);
             System.out.println("Energy consumed: " + ans3_1.energyCost);
+            System.out.println("Time used to explore: " + duration3 + "ms");
         }
 
 
@@ -85,11 +89,15 @@ public class Main {
         double weight2 = 1.58;
         System.out.println("-----------------------Task3 Dynamic Weighting---------------------------------------");
         Task3_2 task3_2 = new Task3_2(distMap_intArray,costMap_intArray,coordMap,weight2);
+        long startTime4 = System.nanoTime();
         node2 ans3_2 = task3_2.ucs();
+        long endTime4 = System.nanoTime();
+        long duration4 = (endTime4 - startTime4) / 1000000;
         if(ans3_2 != null){
             ans3_2.printPath();
             System.out.println("Shortest distance: "+  ans3_2.distCost);
             System.out.println("Energy consumed: " + ans3_2.energyCost);
+            System.out.println("Time used to explore: " + duration4 + "ms");
         }
 
     }
