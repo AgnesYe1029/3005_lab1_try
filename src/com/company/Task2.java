@@ -5,7 +5,7 @@ import java.util.*;
 public class Task2 {
     static Map<Integer, Map<Integer, Double>> distMap;
     static Map<Integer, Map<Integer, Integer>> energyMap;
-    static PriorityQueue<node> pq;
+    static PriorityQueue<node2> pq;
     final static int root = 1;
     final static int goal = 50;
     final static double energyBudget = 287932.0;
@@ -16,8 +16,8 @@ public class Task2 {
         this.pq =  new PriorityQueue<>((a, b) -> (int) ((a.distCost - b.distCost))) ;
     }
 
-    public static node ucs(){
-        node rootNode = new node(root);
+    public static node2 ucs(){
+        node2 rootNode = new node2(root);
         pq.offer(rootNode);
         //maintains a map whose key is the node id and the value is all possible cost values to this node
         //Because there may be multiple nodes connected to this node in the ucs exploration with different
@@ -27,7 +27,7 @@ public class Task2 {
         visited.get(rootNode.id).add(new EdgeCost(0d, 0d));
 
         while(!pq.isEmpty()){
-            node current_node = pq.poll();
+            node2 current_node = pq.poll();
             //The first time we come to goal node, it is the shortest path we want
             if(current_node.id == goal){
                 return current_node;
@@ -46,7 +46,7 @@ public class Task2 {
                         visited.put(neighbourId, new ArrayList<>());
                     }
                     visited.get(neighbourId).add(newEdgeCost);
-                    node nextNode = new node(neighbourId,newDistCost,newEnergyCost,current_node);
+                    node2 nextNode = new node2(neighbourId,newDistCost,newEnergyCost,current_node);
                     pq.offer(nextNode);
                 }
             }
@@ -88,7 +88,7 @@ public class Task2 {
 class EdgeCost {
     double distCost;
     double energyCost;
-    public node node;
+    public node2 node;
 
     public EdgeCost(double distCost, double energyCost) {
         this.distCost = distCost;
@@ -102,14 +102,14 @@ class EdgeCost {
 }
 
 //A class containing node info
-class node{
+class node2{
     int id;
-    Map<node,EdgeCost> neighbours;
+    Map<node2,EdgeCost> neighbours;
     double distCost;
     double energyCost;
-    node parent;
+    node2 parent;
 
-    public node(int id) {
+    public node2(int id) {
         this.id = id;
         this.distCost = 0;
         this.energyCost = 0;
@@ -117,7 +117,7 @@ class node{
         this.parent = null;
     }
 
-    public node(int id, double distCost, double energyCost,node parent) {
+    public node2(int id, double distCost, double energyCost,node2 parent) {
         this.id = id;
         this.distCost = distCost;
         this.energyCost = energyCost;
@@ -125,8 +125,8 @@ class node{
         this.parent = parent;
     }
     public void printPath(){
-        Stack<node> s = new Stack<>();
-        node temp = this;
+        Stack<node2> s = new Stack<>();
+        node2 temp = this;
         while(temp != null){
             s.push(temp);
             temp = temp.parent;

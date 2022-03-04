@@ -108,14 +108,14 @@ public class Main {
          * Task 1
          */
         int V = coordMap.size(); // total number of nodes
-        //GFG.solveTask1(V, distMap_intArray, costMap_intArray);
+        GFG.solveTask1(V, distMap_intArray, costMap_intArray);
 
         /**
          * Task 2
          */
         Task2 task2 = new Task2(distMap_intArray,costMap_intArray);
         long startTime = System.nanoTime();
-        node ans = task2.ucs();
+        node2 ans = task2.ucs();
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1000000;
 
