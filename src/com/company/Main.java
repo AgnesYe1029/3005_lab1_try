@@ -53,7 +53,7 @@ public class Main {
             ans2.printPath();
             System.out.println("Shortest distance: "+  ans2.distCost);
             System.out.println("Energy consumed: " + ans2.energyCost);
-            System.out.println("Time used to explore: " + duration2 + " ms");
+            System.out.println("Time used to explore: " + duration2 + "ms");
 
         }
 
@@ -66,22 +66,13 @@ public class Main {
          * w = 1.00, 1.01, 1.02 ...... 5.98,5.99
          */
         System.out.println("-----------------------Task3 Static Weighting---------------------------------------");
-        double weight = 1;
-        for(int i = 0; i < 500; i++){
-            Task3_1 task3_1 = new Task3_1(distMap_intArray,costMap_intArray,coordMap,weight + i * 0.01);
-            long startTime3_1 = System.nanoTime();
-            node2 ans3_1 = task3_1.ucs();
-            long endTime3_1 = System.nanoTime();
-            long duration3_1 = (endTime3_1 - startTime3_1) / 1000000;
-
-            if(ans3_1 != null){
-                System.out.println("===================" + i +"th run========================================");
-                ans3_1.printPath();
-                System.out.println("Shortest distance: "+  ans3_1.distCost);
-                System.out.println("Energy consumed: " + ans3_1.energyCost);
-                System.out.println("Time used to explore: " + duration3_1 + " ms");
-
-            }
+        double weight = 1.19;
+        Task3_1 task3_1 = new Task3_1(distMap_intArray,costMap_intArray,coordMap,weight);
+        node2 ans3_1 = task3_1.ucs();
+        if(ans3_1 != null){
+            ans3_1.printPath();
+            System.out.println("Shortest distance: "+  ans3_1.distCost);
+            System.out.println("Energy consumed: " + ans3_1.energyCost);
         }
 
 
@@ -91,23 +82,14 @@ public class Main {
          *      ? g(n) + h(n)
          *      : (g(n) + (2*w - 1) * h(n)) / w
          */
-        double weight2 = 1;
+        double weight2 = 1.58;
         System.out.println("-----------------------Task3 Dynamic Weighting---------------------------------------");
-        for(int i = 0; i < 100; i++) {
-            Task3_2 task3_2 = new Task3_2(distMap_intArray,costMap_intArray,coordMap,weight2 + i * 0.01);
-            long startTime3_2 = System.nanoTime();
-            node2 ans3_2 = task3_2.ucs();
-            long endTime3_2 = System.nanoTime();
-            long duration3_2 = (endTime3_2 - startTime3_2) / 1000000;
-
-            if(ans3_2 != null){
-                System.out.println("===================" + i +"th run========================================");
-                ans3_2.printPath();
-                System.out.println("Shortest distance: "+  ans3_2.distCost);
-                System.out.println("Energy consumed: " + ans3_2.energyCost);
-                System.out.println("Time used to explore: " + duration3_2 + " ms");
-
-            }
+        Task3_2 task3_2 = new Task3_2(distMap_intArray,costMap_intArray,coordMap,weight2);
+        node2 ans3_2 = task3_2.ucs();
+        if(ans3_2 != null){
+            ans3_2.printPath();
+            System.out.println("Shortest distance: "+  ans3_2.distCost);
+            System.out.println("Energy consumed: " + ans3_2.energyCost);
         }
 
     }
