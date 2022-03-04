@@ -2,18 +2,29 @@ package com.company;
 
 import java.util.*;
 
-public class Task2 {
+public class Task3_2 {
     static Map<Integer, Map<Integer, Double>> distMap;
     static Map<Integer, Map<Integer, Integer>> energyMap;
+    static Map<Integer, List<Integer>> coordMap;
     static PriorityQueue<node2> pq;
     final static int root = 1;
     final static int goal = 50;
     final static double energyBudget = 287932.0;
+    static double weight;
 
-    public Task2(Map<int[],Double> distMap, Map<int[],Integer> energyMap) {
+    public Task3_2(Map<int[],Double> distMap, Map<int[],Integer> energyMap) {
         this.distMap = constructMap(distMap);
         this.energyMap = constructMap(energyMap);
         this.pq =  new PriorityQueue<>((a, b) -> (int) ((a.distCost - b.distCost))) ;
+        this.weight = 1.0;
+    }
+    public Task3_2(Map<int[],Double> distMap, Map<int[],Integer> energyMap, Map<Integer, List<Integer>> coordMap, double weight) {
+        this.distMap = constructMap(distMap);
+        this.energyMap = constructMap(energyMap);
+        this.coordMap = coordMap;
+        this.weight = weight;
+        this.pq =  new PriorityQueue<>((a, b) -> (int) (AStarCal(a.distCost, coordMap.get(a.id), goal, weight) - AStarCal(b.distCost, coordMap.get(b.id), goal, weight))) ;
+
     }
 
     public static node2 ucs(){
@@ -81,5 +92,13 @@ public class Task2 {
             }
         }
         return true;
+    }
+    public static double AStarCal(double distCost,List<Integer> nodeCoord ,int goal, double weight){
+        List<Integer> goalCoord = coordMap.get(goal);
+        double x = Math.abs(nodeCoord.get(0) - goalCoord.get(0));
+        double y = Math.abs(nodeCoord.get(1) - goalCoord.get(1));
+        double euclideanDist = Math.sqrt(x * x + y * y);
+        return distCost < euclideanDist ? distCost + euclideanDist
+                : (distCost + (2 * weight - 1) * euclideanDist) / weight;
     }
 }
