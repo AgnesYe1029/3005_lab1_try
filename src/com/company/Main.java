@@ -37,7 +37,7 @@ public class Main {
          */
         int V = coordMap.size(); // total number of nodes
         System.out.println("-----------------------Task1---------------------------------------");
-        GFG.solveTask1(V, distMap_intArray, costMap_intArray);
+        Task1.solveTask1(V, distMap_intArray, costMap_intArray);
 
         /**
          * Task 2
@@ -56,15 +56,15 @@ public class Main {
             System.out.println("Time used to explore: " + duration2 + " ms");
 
         }
-
-        /**
+/*
+        *//**
          * Task 3
-         */
-        /**
+         *//*
+        *//**
          * Task 3 Static Weighting
          * f(n) = g(n) + w * h(n)
          * w = 1.00, 1.01, 1.02 ...... 5.98,5.99
-         */
+         *//*
         System.out.println("-----------------------Task3 Static Weighting---------------------------------------");
         double weight = 1;
         for(int i = 0; i < 500; i++){
@@ -85,12 +85,12 @@ public class Main {
         }
 
 
-        /**
+        *//**
          * Task 3 Dynamic Weighting
          * f(n) = f(n) = g(n) < h(n)
          *      ? g(n) + h(n)
          *      : (g(n) + (2*w - 1) * h(n)) / w
-         */
+         *//*
         double weight2 = 1;
         System.out.println("-----------------------Task3 Dynamic Weighting---------------------------------------");
         for(int i = 0; i < 100; i++) {
@@ -108,7 +108,7 @@ public class Main {
                 System.out.println("Time used to explore: " + duration3_2 + " ms");
 
             }
-        }
+        }*/
 
     }
 
