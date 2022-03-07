@@ -195,7 +195,7 @@ public class Task1 {
         System.out.println("Shortest distance: " + dpq.dist[49]);
 
         //print energy cost
-        System.out.println("Energy consumed: " + energy_cost);
+        System.out.println("Total energy cost: " + energy_cost);
 
         //print time used
         System.out.println("Time used to explore: " + duration + " ms");

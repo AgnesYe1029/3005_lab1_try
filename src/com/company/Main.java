@@ -52,7 +52,7 @@ public class Main {
         if(ans2 != null){
             ans2.printPath();
             System.out.println("Shortest distance: "+  ans2.distCost);
-            System.out.println("Energy consumed: " + ans2.energyCost);
+            System.out.println("Total energy cost: " + ans2.energyCost);
             System.out.println("Time used to explore: " + duration2 + "ms");
 
         }
@@ -75,7 +75,7 @@ public class Main {
         if(ans3_1 != null){
             ans3_1.printPath();
             System.out.println("Shortest distance: "+  ans3_1.distCost);
-            System.out.println("Energy consumed: " + ans3_1.energyCost);
+            System.out.println("Total energy cost " + ans3_1.energyCost);
             System.out.println("Time used to explore: " + duration3 + "ms");
         }
 
@@ -96,7 +96,7 @@ public class Main {
         if(ans3_2 != null){
             ans3_2.printPath();
             System.out.println("Shortest distance: "+  ans3_2.distCost);
-            System.out.println("Energy consumed: " + ans3_2.energyCost);
+            System.out.println("Total energy cost: " + ans3_2.energyCost);
             System.out.println("Time used to explore: " + duration4 + "ms");
         }
 
